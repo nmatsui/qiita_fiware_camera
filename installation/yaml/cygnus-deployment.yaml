@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cygnus
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cygnus
+  template:
+    metadata:
+      labels:
+        app: cygnus
+    spec:
+      containers:
+      - name: cygnus
+        image: fiware/cygnus-ngsi:2.15.0
+        ports:
+        - containerPort: 5051
+          name: cygnus-service
+        - containerPort: 5080
+          name: cygnus-api
+        livenessProbe:
+          tcpSocket:
+            port: 5080
+          failureThreshold: 12
+          periodSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 5080
+          failureThreshold: 12
+          periodSeconds: 10
+        env:
+        - name: CYGNUS_LOG_LEVEL
+          value: "INFO"
+        - name: CYGNUS_API_PORT
+          value: "5080"
+        - name: CYGNUS_SERVICE_PORT
+          value: "5051"
+        - name: CYGNUS_MONGO_SERVICE_PORT
+          value: "5051"
+        - name: CYGNUS_MONGO_HOSTS
+          value: "mongodb-0.mongodb-headless:27017,mongodb-1.mongodb-headless:27017,mongodb-2.mongodb-headless:27017"
+        - name: CYGNUS_MONGO_DATA_MODEL
+          value: "dm-by-service-path"
+        - name: CYGNUS_MONGO_ATTR_PERSISTENCE
+          value: "column"
+        - name: CYGNUS_MONGO_ENABLE_ENCODING
+          value: "true"
