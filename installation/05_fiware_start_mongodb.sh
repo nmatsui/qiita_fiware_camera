@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(cd $(dirname $0);pwd)/../variables/env.fiware
+source $(cd $(dirname $0);pwd)/../variables/env
 CWD=$(cd $(dirname $0);pwd)
 
 ## start mongodb

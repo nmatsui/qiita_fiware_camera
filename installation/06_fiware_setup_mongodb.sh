@@ -1,5 +1,5 @@
 #!/bin/bash
-source $(cd $(dirname $0);pwd)/../variables/env.fiware
+source $(cd $(dirname $0);pwd)/../variables/env
 
 # setup replicaset
 kubectl run mongodb-client --rm --tty -i --restart='Never' --image marketplace.azurecr.io/bitnami/mongodb:4.4.15-debian-10-r2 --command -- \
