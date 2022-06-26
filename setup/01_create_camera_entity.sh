@@ -8,7 +8,7 @@ curl -i https://${HOST}.${DOMAIN}/v2/entities/ \
      -H "Fiware-Service: ${FIWARE_SERVICE}" \
      -X POST -d @- <<__EOS__
 {
-  "id": "camera1",
+  "id": "${ENTITY_ID}",
   "type": "camera",
   "created_at": {
     "value": "$(date '+%Y-%m-%dT%H:%M:%S%z')",
@@ -27,5 +27,4 @@ curl -i https://${HOST}.${DOMAIN}/v2/entities/ \
   }
 }
 __EOS__
-
 
