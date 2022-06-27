@@ -278,5 +278,5 @@ A demonstration to build a FIWARE platform that works with Azure Blob Storage to
 [MIT License](/LICENSE)
 
 ## Copyright
-Copyright (c) 2021 [Nobuyuki Matsui](mailto:nobuyuki.matsui@gmail.com)
+Copyright (c) 2022 [Nobuyuki Matsui](mailto:nobuyuki.matsui@gmail.com)
 
